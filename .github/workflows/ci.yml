@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Reset SwiftPM binary artifact caches
+        run: |
+          rm -rf "$HOME/Library/Caches/org.swift.swiftpm/artifacts"
+          find "$HOME/Library/Developer/Xcode/DerivedData" \
+            -path '*/SourcePackages/artifacts' -prune -exec rm -rf {} + 2>/dev/null || true
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build
+        run: |
+          xcodebuild -project Gauss.xcodeproj \
+            -scheme Gauss \
+            -configuration Debug \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Test engine (GaussEngine)
+        run: swift test --package-path GaussEngine

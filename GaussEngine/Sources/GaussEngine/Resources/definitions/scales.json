@@ -1,0 +1,10 @@
+{
+  "scales": [
+    { "word": "k", "multiplier": 1000 },
+    { "word": "thousand", "multiplier": 1000 },
+    { "word": "M", "multiplier": 1000000 },
+    { "word": "million", "multiplier": 1000000 },
+    { "word": "billion", "multiplier": 1000000000 },
+    { "word": "trillion", "multiplier": 1000000000000 }
+  ]
+}

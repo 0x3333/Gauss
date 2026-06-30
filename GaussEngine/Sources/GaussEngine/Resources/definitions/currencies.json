@@ -1,0 +1,250 @@
+{
+  "currencies": [
+    {
+      "code": "USD",
+      "symbol": "$",
+      "variants": ["$", "USD", "dollar", "dollars", "usd", "us dollar", "us dollars"],
+      "format": "$"
+    },
+    {
+      "code": "EUR",
+      "symbol": "€",
+      "variants": ["€", "EUR", "euro", "euros", "eur"],
+      "format": "€"
+    },
+    {
+      "code": "GBP",
+      "symbol": "£",
+      "variants": ["£", "GBP", "pound", "pounds", "gbp", "sterling", "pound sterling"],
+      "format": "£"
+    },
+    {
+      "code": "JPY",
+      "symbol": "¥",
+      "variants": ["¥", "JPY", "yen", "jpy", "japanese yen"],
+      "format": "¥"
+    },
+    {
+      "code": "CNY",
+      "symbol": "¥",
+      "variants": ["CNY", "yuan", "renminbi", "rmb", "cny", "chinese yuan"],
+      "format": "¥"
+    },
+    {
+      "code": "AUD",
+      "symbol": "A$",
+      "variants": ["A$", "AUD", "aud", "australian dollar", "australian dollars"],
+      "format": "A$"
+    },
+    {
+      "code": "CAD",
+      "symbol": "C$",
+      "variants": ["C$", "CAD", "cad", "canadian dollar", "canadian dollars"],
+      "format": "C$"
+    },
+    {
+      "code": "CHF",
+      "symbol": "Fr",
+      "variants": ["Fr", "CHF", "chf", "swiss franc", "swiss francs", "franc", "francs"],
+      "format": "Fr"
+    },
+    {
+      "code": "HKD",
+      "symbol": "HK$",
+      "variants": ["HK$", "HKD", "hkd", "hong kong dollar", "hong kong dollars"],
+      "format": "HK$"
+    },
+    {
+      "code": "SGD",
+      "symbol": "S$",
+      "variants": ["S$", "SGD", "sgd", "singapore dollar", "singapore dollars"],
+      "format": "S$"
+    },
+    {
+      "code": "KRW",
+      "symbol": "₩",
+      "variants": ["₩", "KRW", "krw", "won", "korean won", "south korean won"],
+      "format": "₩"
+    },
+    {
+      "code": "TWD",
+      "symbol": "NT$",
+      "variants": ["NT$", "TWD", "twd", "taiwan dollar", "new taiwan dollar", "new taiwan dollars"],
+      "format": "NT$"
+    },
+    {
+      "code": "INR",
+      "symbol": "₹",
+      "variants": ["₹", "INR", "inr", "rupee", "rupees", "indian rupee", "indian rupees"],
+      "format": "₹"
+    },
+    {
+      "code": "BRL",
+      "symbol": "R$",
+      "variants": ["R$", "BRL", "brl", "real", "reais", "brazilian real"],
+      "format": "R$"
+    },
+    {
+      "code": "MXN",
+      "symbol": "MX$",
+      "variants": ["MX$", "MXN", "mxn", "mexican peso", "mexican pesos"],
+      "format": "MX$"
+    },
+    {
+      "code": "RUB",
+      "symbol": "₽",
+      "variants": ["₽", "RUB", "rub", "ruble", "rubles", "russian ruble", "russian rubles"],
+      "format": "₽"
+    },
+    {
+      "code": "SEK",
+      "symbol": "kr",
+      "variants": ["SEK", "sek", "swedish krona", "swedish kronor"],
+      "format": "kr"
+    },
+    {
+      "code": "NOK",
+      "symbol": "kr",
+      "variants": ["NOK", "nok", "norwegian krone", "norwegian kroner"],
+      "format": "kr"
+    },
+    {
+      "code": "DKK",
+      "symbol": "kr",
+      "variants": ["DKK", "dkk", "danish krone", "danish kroner"],
+      "format": "kr"
+    },
+    {
+      "code": "NZD",
+      "symbol": "NZ$",
+      "variants": ["NZ$", "NZD", "nzd", "new zealand dollar", "new zealand dollars"],
+      "format": "NZ$"
+    },
+    {
+      "code": "ZAR",
+      "symbol": "R",
+      "variants": ["ZAR", "zar", "rand", "south african rand"],
+      "format": "R"
+    },
+    {
+      "code": "THB",
+      "symbol": "฿",
+      "variants": ["฿", "THB", "thb", "baht", "thai baht"],
+      "format": "฿"
+    },
+    {
+      "code": "PHP",
+      "symbol": "₱",
+      "variants": ["₱", "PHP", "php", "peso", "philippine peso", "philippine pesos"],
+      "format": "₱"
+    },
+    {
+      "code": "MYR",
+      "symbol": "RM",
+      "variants": ["RM", "MYR", "myr", "ringgit", "malaysian ringgit"],
+      "format": "RM"
+    },
+    {
+      "code": "IDR",
+      "symbol": "Rp",
+      "variants": ["Rp", "IDR", "idr", "rupiah", "indonesian rupiah"],
+      "format": "Rp"
+    },
+    {
+      "code": "VND",
+      "symbol": "₫",
+      "variants": ["₫", "VND", "vnd", "dong", "vietnamese dong"],
+      "format": "₫"
+    },
+    {
+      "code": "AED",
+      "symbol": "د.إ",
+      "variants": ["AED", "aed", "dirham", "dirhams", "uae dirham", "uae dirhams"],
+      "format": "AED"
+    },
+    {
+      "code": "SAR",
+      "symbol": "﷼",
+      "variants": ["﷼", "SAR", "sar", "riyal", "riyals", "saudi riyal", "saudi riyals"],
+      "format": "SAR"
+    },
+    {
+      "code": "TRY",
+      "symbol": "₺",
+      "variants": ["₺", "TRY", "try", "lira", "liras", "turkish lira", "turkish liras"],
+      "format": "₺"
+    },
+    {
+      "code": "PLN",
+      "symbol": "zł",
+      "variants": ["zł", "PLN", "pln", "zloty", "zlotys", "polish zloty"],
+      "format": "zł"
+    },
+    {
+      "code": "CZK",
+      "symbol": "Kč",
+      "variants": ["Kč", "CZK", "czk", "koruna", "czech koruna"],
+      "format": "Kč"
+    },
+    {
+      "code": "HUF",
+      "symbol": "Ft",
+      "variants": ["Ft", "HUF", "huf", "forint", "hungarian forint"],
+      "format": "Ft"
+    },
+    {
+      "code": "ILS",
+      "symbol": "₪",
+      "variants": ["₪", "ILS", "ils", "shekel", "shekels", "new shekel"],
+      "format": "₪"
+    },
+    {
+      "code": "CLP",
+      "symbol": "CLP$",
+      "variants": ["CLP$", "CLP", "clp", "chilean peso", "chilean pesos"],
+      "format": "CLP$"
+    },
+    {
+      "code": "COP",
+      "symbol": "COL$",
+      "variants": ["COL$", "COP", "cop", "colombian peso", "colombian pesos"],
+      "format": "COL$"
+    },
+    {
+      "code": "ARS",
+      "symbol": "AR$",
+      "variants": ["AR$", "ARS", "ars", "argentine peso", "argentine pesos"],
+      "format": "AR$"
+    },
+    {
+      "code": "EGP",
+      "symbol": "E£",
+      "variants": ["E£", "EGP", "egp", "egyptian pound", "egyptian pounds"],
+      "format": "E£"
+    },
+    {
+      "code": "NGN",
+      "symbol": "₦",
+      "variants": ["₦", "NGN", "ngn", "naira", "nigerian naira"],
+      "format": "₦"
+    },
+    {
+      "code": "PKR",
+      "symbol": "₨",
+      "variants": ["PKR", "pkr", "pakistani rupee", "pakistani rupees"],
+      "format": "₨"
+    },
+    {
+      "code": "BDT",
+      "symbol": "৳",
+      "variants": ["৳", "BDT", "bdt", "taka", "bangladeshi taka"],
+      "format": "৳"
+    },
+    {
+      "code": "UAH",
+      "symbol": "₴",
+      "variants": ["₴", "UAH", "uah", "hryvnia", "ukrainian hryvnia"],
+      "format": "₴"
+    }
+  ]
+}

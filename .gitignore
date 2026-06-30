@@ -1,0 +1,38 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# Secrets / env
+.env
+.env.*
+*.p12
+
+# Supabase CLI
+supabase/.temp/
+
+# Local-only scripts (not shipped with the open-source repo)
+scripts/
+
+# AI agent tooling
+.serena/
+.claude/
+
+# Generated
+Gauss.xcodeproj

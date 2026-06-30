@@ -1,0 +1,504 @@
+{
+  "categories": [
+    {
+      "category": "length",
+      "base": "meter",
+      "units": [
+        {
+          "id": "meter",
+          "variants": ["meter", "meters", "metre", "metres", "m"],
+          "format": "m",
+          "toBase": 1.0
+        },
+        {
+          "id": "kilometer",
+          "variants": ["kilometer", "kilometers", "kilometre", "kilometres", "km"],
+          "format": "km",
+          "toBase": 1000.0
+        },
+        {
+          "id": "centimeter",
+          "variants": ["centimeter", "centimeters", "centimetre", "centimetres", "cm"],
+          "format": "cm",
+          "toBase": 0.01
+        },
+        {
+          "id": "millimeter",
+          "variants": ["millimeter", "millimeters", "millimetre", "millimetres", "mm"],
+          "format": "mm",
+          "toBase": 0.001
+        },
+        {
+          "id": "micrometer",
+          "variants": ["micrometer", "micrometers", "micrometre", "micrometres", "μm", "um"],
+          "format": "μm",
+          "toBase": 0.000001
+        },
+        {
+          "id": "nanometer",
+          "variants": ["nanometer", "nanometers", "nanometre", "nanometres", "nm"],
+          "format": "nm",
+          "toBase": 0.000000001
+        },
+        {
+          "id": "inch",
+          "variants": ["inch", "inches", "in", "\""],
+          "format": "in",
+          "toBase": 0.0254
+        },
+        {
+          "id": "foot",
+          "variants": ["foot", "feet", "ft", "'"],
+          "format": "ft",
+          "toBase": 0.3048
+        },
+        {
+          "id": "yard",
+          "variants": ["yard", "yards", "yd"],
+          "format": "yd",
+          "toBase": 0.9144
+        },
+        {
+          "id": "mile",
+          "variants": ["mile", "miles", "mi"],
+          "format": "mi",
+          "toBase": 1609.344
+        },
+        {
+          "id": "nautical_mile",
+          "variants": ["nautical mile", "nautical miles", "nmi", "knot distance"],
+          "format": "nmi",
+          "toBase": 1852.0
+        },
+        {
+          "id": "light_year",
+          "variants": ["light year", "light years", "lightyear", "lightyears", "ly"],
+          "format": "ly",
+          "toBase": 9.4607304725808e15
+        },
+        {
+          "id": "chain",
+          "variants": ["chain", "chains", "ch"],
+          "format": "ch",
+          "toBase": 20.1168
+        },
+        {
+          "id": "furlong",
+          "variants": ["furlong", "furlongs", "fur"],
+          "format": "fur",
+          "toBase": 201.168
+        },
+        {
+          "id": "rod",
+          "variants": ["rod", "rods", "rd"],
+          "format": "rd",
+          "toBase": 5.0292
+        },
+        {
+          "id": "league",
+          "variants": ["league", "leagues", "lea"],
+          "format": "lea",
+          "toBase": 4828.032
+        },
+        {
+          "id": "point",
+          "variants": ["point", "points", "pt"],
+          "format": "pt",
+          "toBase": 0.00035277777777778
+        },
+        {
+          "id": "pica",
+          "variants": ["pica", "picas", "pc"],
+          "format": "pc",
+          "toBase": 0.004233333333333
+        }
+      ]
+    },
+    {
+      "category": "weight",
+      "base": "gram",
+      "units": [
+        {
+          "id": "gram",
+          "variants": ["gram", "grams", "gramme", "grammes", "g"],
+          "format": "g",
+          "toBase": 1.0
+        },
+        {
+          "id": "kilogram",
+          "variants": ["kilogram", "kilograms", "kilogramme", "kilogrammes", "kg"],
+          "format": "kg",
+          "toBase": 1000.0
+        },
+        {
+          "id": "milligram",
+          "variants": ["milligram", "milligrams", "milligramme", "milligrammes", "mg"],
+          "format": "mg",
+          "toBase": 0.001
+        },
+        {
+          "id": "tonne",
+          "variants": ["tonne", "tonnes", "metric ton", "metric tons", "t"],
+          "format": "t",
+          "toBase": 1000000.0
+        },
+        {
+          "id": "pound",
+          "variants": ["pound", "pounds", "lb", "lbs"],
+          "format": "lb",
+          "toBase": 453.59237
+        },
+        {
+          "id": "ounce",
+          "variants": ["ounce", "ounces", "oz"],
+          "format": "oz",
+          "toBase": 28.349523125
+        },
+        {
+          "id": "stone",
+          "variants": ["stone", "stones", "st"],
+          "format": "st",
+          "toBase": 6350.29318
+        },
+        {
+          "id": "carat",
+          "variants": ["carat", "carats", "ct"],
+          "format": "ct",
+          "toBase": 0.2
+        },
+        {
+          "id": "grain",
+          "variants": ["grain", "grains", "gr"],
+          "format": "gr",
+          "toBase": 0.06479891
+        }
+      ]
+    },
+    {
+      "category": "volume",
+      "base": "litre",
+      "units": [
+        {
+          "id": "litre",
+          "variants": ["litre", "litres", "liter", "liters", "L"],
+          "format": "L",
+          "toBase": 1.0
+        },
+        {
+          "id": "millilitre",
+          "variants": ["millilitre", "millilitres", "milliliter", "milliliters", "mL"],
+          "format": "mL",
+          "toBase": 0.001
+        },
+        {
+          "id": "cup",
+          "variants": ["cup", "cups"],
+          "format": "cup",
+          "toBase": 0.2365882365
+        },
+        {
+          "id": "pint",
+          "variants": ["pint", "pints", "pt"],
+          "format": "pt",
+          "toBase": 0.473176473
+        },
+        {
+          "id": "quart",
+          "variants": ["quart", "quarts", "qt"],
+          "format": "qt",
+          "toBase": 0.946352946
+        },
+        {
+          "id": "gallon",
+          "variants": ["gallon", "gallons", "gal"],
+          "format": "gal",
+          "toBase": 3.785411784
+        },
+        {
+          "id": "tablespoon",
+          "variants": ["tablespoon", "tablespoons", "tbsp", "tbs"],
+          "format": "tbsp",
+          "toBase": 0.01478676478125
+        },
+        {
+          "id": "teaspoon",
+          "variants": ["teaspoon", "teaspoons", "tsp"],
+          "format": "tsp",
+          "toBase": 0.00492892159375
+        },
+        {
+          "id": "fluid_ounce",
+          "variants": ["fluid ounce", "fluid ounces", "fl oz", "floz", "fl_oz"],
+          "format": "fl oz",
+          "toBase": 0.0295735295625
+        },
+        {
+          "id": "cubic_meter",
+          "variants": ["cubic meter", "cubic meters", "cubic metre", "cubic metres", "m³", "m3"],
+          "format": "m³",
+          "toBase": 1000.0
+        },
+        {
+          "id": "cubic_centimeter",
+          "variants": ["cubic centimeter", "cubic centimeters", "cubic centimetre", "cubic centimetres", "cm³", "cm3", "cc"],
+          "format": "cm³",
+          "toBase": 0.001
+        },
+        {
+          "id": "cubic_inch",
+          "variants": ["cubic inch", "cubic inches", "in³", "in3"],
+          "format": "in³",
+          "toBase": 0.016387064
+        },
+        {
+          "id": "cubic_foot",
+          "variants": ["cubic foot", "cubic feet", "ft³", "ft3"],
+          "format": "ft³",
+          "toBase": 28.316846592
+        }
+      ]
+    },
+    {
+      "category": "area",
+      "base": "sq_meter",
+      "units": [
+        {
+          "id": "sq_meter",
+          "variants": ["square meter", "square meters", "square metre", "square metres", "sq meter", "sq meters", "sq m", "m²", "m2"],
+          "format": "m²",
+          "toBase": 1.0
+        },
+        {
+          "id": "sq_kilometer",
+          "variants": ["square kilometer", "square kilometers", "square kilometre", "square kilometres", "sq km", "km²", "km2"],
+          "format": "km²",
+          "toBase": 1000000.0
+        },
+        {
+          "id": "sq_centimeter",
+          "variants": ["square centimeter", "square centimeters", "square centimetre", "square centimetres", "sq cm", "cm²", "cm2"],
+          "format": "cm²",
+          "toBase": 0.0001
+        },
+        {
+          "id": "hectare",
+          "variants": ["hectare", "hectares", "ha"],
+          "format": "ha",
+          "toBase": 10000.0
+        },
+        {
+          "id": "acre",
+          "variants": ["acre", "acres", "ac"],
+          "format": "ac",
+          "toBase": 4046.8564224
+        },
+        {
+          "id": "sq_foot",
+          "variants": ["square foot", "square feet", "sq ft", "ft²", "ft2"],
+          "format": "ft²",
+          "toBase": 0.09290304
+        },
+        {
+          "id": "sq_inch",
+          "variants": ["square inch", "square inches", "sq in", "in²", "in2"],
+          "format": "in²",
+          "toBase": 0.00064516
+        },
+        {
+          "id": "sq_yard",
+          "variants": ["square yard", "square yards", "sq yd", "yd²", "yd2"],
+          "format": "yd²",
+          "toBase": 0.83612736
+        },
+        {
+          "id": "sq_mile",
+          "variants": ["square mile", "square miles", "sq mi", "mi²", "mi2"],
+          "format": "mi²",
+          "toBase": 2589988.110336
+        }
+      ]
+    },
+    {
+      "category": "temperature",
+      "base": "kelvin",
+      "units": [
+        {
+          "id": "kelvin",
+          "variants": ["kelvin", "kelvins", "K"],
+          "format": "K",
+          "toBase": 1.0
+        },
+        {
+          "id": "celsius",
+          "variants": ["celsius", "centigrade", "°C", "C"],
+          "format": "°C",
+          "toBaseFormula": "value + 273.15",
+          "fromBaseFormula": "value - 273.15"
+        },
+        {
+          "id": "fahrenheit",
+          "variants": ["fahrenheit", "°F", "F"],
+          "format": "°F",
+          "toBaseFormula": "(value + 459.67) * 5.0 / 9.0",
+          "fromBaseFormula": "value * 9.0 / 5.0 - 459.67"
+        }
+      ]
+    },
+    {
+      "category": "angle",
+      "base": "radian",
+      "units": [
+        {
+          "id": "radian",
+          "variants": ["radian", "radians", "rad"],
+          "format": "rad",
+          "toBase": 1.0
+        },
+        {
+          "id": "degree",
+          "variants": ["degree", "degrees", "deg", "°"],
+          "format": "°",
+          "toBase": 0.017453292519943
+        }
+      ]
+    },
+    {
+      "category": "data",
+      "base": "byte",
+      "units": [
+        {
+          "id": "bit",
+          "variants": ["bit", "bits"],
+          "format": "bit",
+          "toBase": 0.125
+        },
+        {
+          "id": "byte",
+          "variants": ["byte", "bytes", "B"],
+          "format": "B",
+          "toBase": 1.0
+        },
+        {
+          "id": "kilobyte",
+          "variants": ["kilobyte", "kilobytes", "KB"],
+          "format": "KB",
+          "toBase": 1000.0
+        },
+        {
+          "id": "megabyte",
+          "variants": ["megabyte", "megabytes", "MB"],
+          "format": "MB",
+          "toBase": 1000000.0
+        },
+        {
+          "id": "gigabyte",
+          "variants": ["gigabyte", "gigabytes", "GB"],
+          "format": "GB",
+          "toBase": 1000000000.0
+        },
+        {
+          "id": "terabyte",
+          "variants": ["terabyte", "terabytes", "TB"],
+          "format": "TB",
+          "toBase": 1000000000000.0
+        },
+        {
+          "id": "petabyte",
+          "variants": ["petabyte", "petabytes", "PB"],
+          "format": "PB",
+          "toBase": 1000000000000000.0
+        },
+        {
+          "id": "kibibyte",
+          "variants": ["kibibyte", "kibibytes", "KiB"],
+          "format": "KiB",
+          "toBase": 1024.0
+        },
+        {
+          "id": "mebibyte",
+          "variants": ["mebibyte", "mebibytes", "MiB"],
+          "format": "MiB",
+          "toBase": 1048576.0
+        },
+        {
+          "id": "gibibyte",
+          "variants": ["gibibyte", "gibibytes", "GiB"],
+          "format": "GiB",
+          "toBase": 1073741824.0
+        },
+        {
+          "id": "tebibyte",
+          "variants": ["tebibyte", "tebibytes", "TiB"],
+          "format": "TiB",
+          "toBase": 1099511627776.0
+        }
+      ]
+    },
+    {
+      "category": "time",
+      "base": "second",
+      "units": [
+        {
+          "id": "second",
+          "variants": ["second", "seconds", "sec", "secs", "s"],
+          "format": "s",
+          "toBase": 1.0
+        },
+        {
+          "id": "minute",
+          "variants": ["minute", "minutes", "min", "mins"],
+          "format": "min",
+          "toBase": 60.0
+        },
+        {
+          "id": "hour",
+          "variants": ["hour", "hours", "hr", "hrs", "h"],
+          "format": "hr",
+          "toBase": 3600.0
+        },
+        {
+          "id": "day",
+          "variants": ["day", "days", "d"],
+          "format": "day",
+          "toBase": 86400.0
+        },
+        {
+          "id": "week",
+          "variants": ["week", "weeks", "wk", "wks"],
+          "format": "wk",
+          "toBase": 604800.0
+        },
+        {
+          "id": "month",
+          "variants": ["month", "months", "mo"],
+          "format": "mo",
+          "toBase": 2629800.0
+        },
+        {
+          "id": "year",
+          "variants": ["year", "years", "yr", "yrs"],
+          "format": "yr",
+          "toBase": 31557600.0
+        },
+        {
+          "id": "millisecond",
+          "variants": ["millisecond", "milliseconds", "ms", "msec"],
+          "format": "ms",
+          "toBase": 0.001
+        },
+        {
+          "id": "microsecond",
+          "variants": ["microsecond", "microseconds", "μs", "us", "usec"],
+          "format": "μs",
+          "toBase": 0.000001
+        },
+        {
+          "id": "workday",
+          "variants": ["workday", "workdays", "business day", "business days"],
+          "format": "workday",
+          "toBase": 86400.0
+        }
+      ]
+    }
+  ]
+}

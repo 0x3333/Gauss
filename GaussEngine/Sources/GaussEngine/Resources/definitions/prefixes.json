@@ -1,0 +1,30 @@
+{
+  "si": [
+    { "prefix": "yocto", "symbol": "y", "factor": 1e-24 },
+    { "prefix": "zepto", "symbol": "z", "factor": 1e-21 },
+    { "prefix": "atto", "symbol": "a", "factor": 1e-18 },
+    { "prefix": "femto", "symbol": "f", "factor": 1e-15 },
+    { "prefix": "pico", "symbol": "p", "factor": 1e-12 },
+    { "prefix": "nano", "symbol": "n", "factor": 1e-9 },
+    { "prefix": "micro", "symbol": "μ", "factor": 1e-6 },
+    { "prefix": "milli", "symbol": "m", "factor": 1e-3 },
+    { "prefix": "centi", "symbol": "c", "factor": 1e-2 },
+    { "prefix": "deci", "symbol": "d", "factor": 1e-1 },
+    { "prefix": "deca", "symbol": "da", "factor": 1e1 },
+    { "prefix": "hecto", "symbol": "h", "factor": 1e2 },
+    { "prefix": "kilo", "symbol": "k", "factor": 1e3 },
+    { "prefix": "mega", "symbol": "M", "factor": 1e6 },
+    { "prefix": "giga", "symbol": "G", "factor": 1e9 },
+    { "prefix": "tera", "symbol": "T", "factor": 1e12 },
+    { "prefix": "peta", "symbol": "P", "factor": 1e15 },
+    { "prefix": "exa", "symbol": "E", "factor": 1e18 },
+    { "prefix": "zetta", "symbol": "Z", "factor": 1e21 },
+    { "prefix": "yotta", "symbol": "Y", "factor": 1e24 }
+  ],
+  "iec": [
+    { "prefix": "kibi", "symbol": "Ki", "factor": 1024 },
+    { "prefix": "mebi", "symbol": "Mi", "factor": 1048576 },
+    { "prefix": "gibi", "symbol": "Gi", "factor": 1073741824 },
+    { "prefix": "tebi", "symbol": "Ti", "factor": 1099511627776 }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "functions": [
+    "sin", "cos", "tan", "asin", "acos", "atan",
+    "sinh", "cosh", "tanh",
+    "sqrt", "cbrt", "root", "log", "ln",
+    "abs", "ceil", "floor", "round", "fact"
+  ]
+}

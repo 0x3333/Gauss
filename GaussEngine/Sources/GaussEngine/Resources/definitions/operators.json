@@ -1,0 +1,18 @@
+{
+  "operators": [
+    { "word": "plus", "op": "add" },
+    { "word": "with", "op": "add" },
+    { "word": "minus", "op": "subtract" },
+    { "word": "without", "op": "subtract" },
+    { "word": "subtract", "op": "subtract" },
+    { "word": "times", "op": "multiply" },
+    { "word": "multiplied by", "op": "multiply" },
+    { "word": "divided by", "op": "divide" },
+    { "word": "mod", "op": "mod" },
+    { "word": "band", "op": "band" },
+    { "word": "bor", "op": "bor" },
+    { "word": "bxor", "op": "bxor" },
+    { "word": "lshift", "op": "lshift" },
+    { "word": "rshift", "op": "rshift" }
+  ]
+}
