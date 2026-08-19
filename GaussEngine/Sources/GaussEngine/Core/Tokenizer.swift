@@ -299,6 +299,21 @@ public struct Tokenizer {
                 idx += 1
                 continue
             }
+            // Line reference: @1, @12
+            if sc.value == UInt32(UnicodeScalar("@").value) {
+                idx += 1
+                let start = idx
+                while idx < scalars.count && isDigit(scalars[idx]) { idx += 1 }
+                if idx > start {
+                    let numStr = String(String.UnicodeScalarView(scalars[start..<idx]))
+                    if let n = Int(numStr) {
+                        tokens.append(.lineRef(n))
+                        continue
+                    }
+                }
+                continue
+            }
+
             if sc.value == UInt32(UnicodeScalar("(").value) {
                 tokens.append(.leftParen)
                 idx += 1

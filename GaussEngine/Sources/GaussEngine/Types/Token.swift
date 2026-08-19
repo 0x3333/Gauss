@@ -18,6 +18,7 @@ public enum Token: Equatable {
     // Identifiers
     case identifier(String)             // variable name, unit name, function name
     case keyword(Keyword)               // in, to, as, of, on, off, from
+    case lineRef(Int)                   // @1 — 1-based line number
 
     // Structure
     case header(String)                 // # title

@@ -75,7 +75,7 @@ Binaries are hosted on GitHub Releases; the Sparkle appcast is served from the
 
 - Localizations: English (`en`) and Simplified Chinese (`zh-Hans`)
 - Variable names are case-insensitive (`Price` = `price`)
-- The engine evaluates documents line-by-line; lines can reference previous line results and variables
+- The engine evaluates documents line-by-line; lines can reference previous line results (`@1` is 1-based), `prev`, and variables
 - Percentage operations support "of", "on", "off" modifiers (e.g., "tax on price")
 - `sum` aggregates numeric results; percentage values are excluded from sum
 - Results use `Value` enum — always check which case before formatting/comparing

@@ -13,6 +13,7 @@ final class ResultView: NSView {
     private var lineResults: [GaussEngine.LineResult] = []
     private var lineMetrics: [(y: CGFloat, height: CGFloat)] = []
     private var textContainerInset: NSSize = NSSize(width: 8, height: 8)
+    private var widthConstraint: NSLayoutConstraint?
 
     // Tracking area for hover
     private var trackingArea: NSTrackingArea?
@@ -22,13 +23,37 @@ final class ResultView: NSView {
 
     // MARK: - Update
 
+    func attachWidthConstraint() {
+        let constraint = widthAnchor.constraint(equalToConstant: Self.minWidth)
+        constraint.isActive = true
+        widthConstraint = constraint
+    }
+
     func update(with results: [GaussEngine.LineResult], textView: CalcTextView) {
         lineResults = results
         lineMetrics = textView.lineMetrics()
         textContainerInset = textView.textContainerInset
+        widthConstraint?.constant = Self.width(for: results)
         needsDisplay = true
         updateTrackingArea()
         announceResultsIfNeeded(results)
+    }
+
+    private static let minWidth: CGFloat = 48
+    private static let maxWidth: CGFloat = 280
+    private static let horizontalPadding: CGFloat = 16
+
+    private static func width(for results: [GaussEngine.LineResult]) -> CGFloat {
+        let font = Theme.monoFont
+        var widest: CGFloat = 0
+        for result in results where !result.formatted.isEmpty {
+            let w = NSAttributedString(
+                string: result.formatted,
+                attributes: [.font: font]
+            ).size().width
+            if w > widest { widest = w }
+        }
+        return min(maxWidth, max(minWidth, ceil(widest) + horizontalPadding))
     }
 
     // MARK: - Accessibility
@@ -84,6 +109,13 @@ final class ResultView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+
+        Theme.separator.setStroke()
+        let divider = NSBezierPath()
+        divider.lineWidth = 1
+        divider.move(to: NSPoint(x: 0.5, y: 0))
+        divider.line(to: NSPoint(x: 0.5, y: bounds.height))
+        divider.stroke()
 
         let font = Theme.monoFont
         let paragraphStyle = NSMutableParagraphStyle()
