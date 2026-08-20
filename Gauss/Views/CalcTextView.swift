@@ -119,13 +119,16 @@ final class CalcTextView: NSTextView {
         let partial = text.substring(with: partialRange)
         guard partial.count >= 2 else { return }
 
-        // Get the best completion
-        let suggestions = provider.completions(for: partial, limit: 1)
-        guard let best = suggestions.first else { return }
+        // Get the best completion using the full line context
+        var lineStart = wordStart
+        while lineStart > 0 && text.character(at: lineStart - 1) != 0x0A {
+            lineStart -= 1
+        }
+        let contextRange = NSRange(location: lineStart, length: cursorPos - lineStart)
+        let context = text.substring(with: contextRange)
 
         // The ghost shows only the remaining characters
-        let remaining = String(best.dropFirst(partial.count))
-        guard !remaining.isEmpty else { return }
+        guard let remaining = provider.completionSuffix(for: context), !remaining.isEmpty else { return }
 
         ghostSuggestion = remaining
         ghostWordRange = partialRange

@@ -88,4 +88,37 @@ public final class CompletionProvider {
         }
         return results
     }
+
+    /// Returns text to append for the longest known phrase ending at the cursor.
+    public func completionSuffix(for context: String) -> String? {
+        let words = context.split { !$0.isLetter && !$0.isNumber }.map(String.init)
+        guard let lastWord = words.last, lastWord.count >= 2 else { return nil }
+
+        let maxWordCount = allWords.lazy
+            .map { $0.word.split(separator: " ").count }
+            .max() ?? 1
+
+        for wordCount in stride(from: min(words.count, maxWordCount), through: 1, by: -1) {
+            let prefix = words.suffix(wordCount).joined(separator: " ")
+            let lower = prefix.lowercased()
+            let matches = allWords.filter { $0.word.lowercased().hasPrefix(lower) }
+            guard !matches.isEmpty else { continue }
+
+            // A complete valid phrase should not be extended to a longer variant.
+            if matches.contains(where: { $0.word.lowercased() == lower }) {
+                return nil
+            }
+
+            let best = matches.min { lhs, rhs in
+                if lhs.word.count != rhs.word.count {
+                    return lhs.word.count < rhs.word.count
+                }
+                return lhs.word.lowercased() < rhs.word.lowercased()
+            }
+            guard let completion = best?.word else { return nil }
+            return String(completion.dropFirst(prefix.count))
+        }
+
+        return nil
+    }
 }
