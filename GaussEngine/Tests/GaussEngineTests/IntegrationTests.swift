@@ -57,11 +57,25 @@ final class IntegrationTests: XCTestCase {
         XCTAssertEqual(engine.evaluateLine("1000 + 234").formatted, "1,234")
     }
 
+    func testNumberFormattingRespectsPrecision() {
+        let engine = try! GaussEngine()
+        engine.formatter.maxDecimalPlaces = 4
+        XCTAssertEqual(engine.evaluateLine("10 / 3").formatted, "3.3333")
+        XCTAssertEqual(engine.evaluateLine("10 / 2").formatted, "5")
+    }
+
     func testCurrencyFormatting() {
         let engine = try! GaussEngine()
         XCTAssertEqual(engine.evaluateLine("$40").formatted, "$40")
         XCTAssertEqual(engine.evaluateLine("$7.31").formatted, "$7.31")
-        XCTAssertEqual(engine.evaluateLine("$7.30").formatted, "$7.30")
+        XCTAssertEqual(engine.evaluateLine("$7.30").formatted, "$7.3")
+    }
+
+    func testCurrencyFormattingRespectsPrecision() {
+        let engine = try! GaussEngine()
+        engine.formatter.maxDecimalPlaces = 4
+        XCTAssertEqual(engine.evaluateLine("$40").formatted, "$40")
+        XCTAssertEqual(engine.evaluateLine("1 BRL in USD").formatted, "$0.2012")
     }
 
     func testUnitFormatting() {

@@ -89,23 +89,7 @@ public struct ValueFormatter {
 
     private func formatCurrency(_ amount: Double, code: String) -> String {
         let symbol = currencySymbol(for: code)
-        if amount == amount.rounded() && abs(amount) < 1e15 {
-            // Integer amount — no decimals (strip .00)
-            return "\(symbol)\(formatWithCommas(Int(amount)))"
-        }
-        // Up to 2 decimal places, keep trailing zeros in tenths (e.g., $7.30 stays $7.30)
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        formatter.groupingSeparator = ","
-        formatter.decimalSeparator = "."
-        let formatted = formatter.string(from: NSNumber(value: amount)) ?? String(amount)
-        let result = "\(symbol)\(formatted)"
-        // Strip trailing .00 but keep .30, .31 etc.
-        if result.hasSuffix(".00") {
-            return String(result.dropLast(3))
-        }
-        return result
+        return "\(symbol)\(formatNumber(amount))"
     }
 
     // MARK: - Date Formatting
@@ -193,12 +177,4 @@ public struct ValueFormatter {
         }
     }
 
-    private func formatWithCommas(_ n: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0
-        formatter.groupingSeparator = ","
-        formatter.decimalSeparator = "."
-        return formatter.string(from: NSNumber(value: n)) ?? String(n)
-    }
 }
