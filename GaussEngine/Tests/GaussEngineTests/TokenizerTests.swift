@@ -41,6 +41,10 @@ final class TokenizerTests: XCTestCase {
         XCTAssertEqual(tokens("10 - 2.5"), [.number(10), .op(.subtract), .number(2.5)])
     }
 
+    func testDecimalWithoutLeadingZero() {
+        XCTAssertEqual(tokens(".1"), [.number(0.1)])
+    }
+
     func testMultiplication() {
         XCTAssertEqual(tokens("3 * 4"), [.number(3), .op(.multiply), .number(4)])
     }

@@ -40,6 +40,10 @@ final class ArithmeticTests: XCTestCase {
         XCTAssertEqual(eval("3 * 4"), .number(12))
     }
 
+    func testMultiplicationByDecimalWithoutLeadingZero() {
+        XCTAssertEqual(eval("1*.1"), .number(0.1))
+    }
+
     func testDivision() {
         XCTAssertEqual(eval("10 / 4"), .number(2.5))
     }

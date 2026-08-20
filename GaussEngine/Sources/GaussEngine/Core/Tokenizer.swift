@@ -124,8 +124,12 @@ public struct Tokenizer {
                 continue
             }
 
-            // ── Numbers (digits, possibly with 0x/0b/0o prefix) ──────────
-            if isDigit(sc) {
+            // ── Numbers (digits or leading decimal point, possibly with 0x/0b/0o prefix) ──
+            if isDigit(sc) || (
+                sc.value == UInt32(UnicodeScalar(".").value)
+                && idx + 1 < scalars.count
+                && isDigit(scalars[idx + 1])
+            ) {
                 // Look for 0x / 0b / 0o prefixes
                 if sc.value == UInt32(UnicodeScalar("0").value) && idx + 1 < scalars.count {
                     let next = scalars[idx + 1]
