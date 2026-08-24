@@ -85,6 +85,13 @@ final class ResultView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
+        Theme.separator.setStroke()
+        let divider = NSBezierPath()
+        divider.lineWidth = 1
+        divider.move(to: NSPoint(x: 0.5, y: 0))
+        divider.line(to: NSPoint(x: 0.5, y: bounds.height))
+        divider.stroke()
+
         let font = Theme.monoFont
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
