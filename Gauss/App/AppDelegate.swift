@@ -101,10 +101,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func toggleWindow() {
         guard let window = calculatorWindow.window else { return }
-        if window.isVisible {
+        switch WindowTogglePolicy.action(
+            isVisible: window.isVisible,
+            isKey: window.isKeyWindow,
+            isAppActive: NSApp.isActive
+        ) {
+        case .hide:
             window.orderOut(nil)
-        } else {
+        case .show:
             calculatorWindow.showWindow(nil)
+            window.makeKeyAndOrderFront(nil)
             NSApp.activate(ignoringOtherApps: true)
         }
     }
@@ -167,7 +173,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         engine.formatter.dateFormatString = Settings.shared.dateFormat
     }
 }
-
 enum WindowLevelPolicy {
     static func calculator(alwaysOnTop: Bool) -> NSWindow.Level {
         alwaysOnTop ? .floating : .normal
@@ -177,5 +182,16 @@ enum WindowLevelPolicy {
         alwaysOnTop
             ? NSWindow.Level(rawValue: NSWindow.Level.floating.rawValue + 1)
             : .normal
+    }
+}
+
+enum WindowTogglePolicy {
+    enum Action {
+        case hide
+        case show
+    }
+
+    static func action(isVisible: Bool, isKey: Bool, isAppActive: Bool) -> Action {
+        isVisible && isKey && isAppActive ? .hide : .show
     }
 }
