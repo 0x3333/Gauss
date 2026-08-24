@@ -73,10 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Apply initial appearance mode
         applyAppearance()
 
-        // Apply initial always-on-top setting
-        if Settings.shared.alwaysOnTop {
-            calculatorWindow.window?.level = .floating
-        }
+        applyWindowLevels()
 
         // Apply initial currency update interval
         currencyUpdater.updateInterval = Settings.shared.currencyUpdateInterval
@@ -124,6 +121,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if preferencesWindow == nil {
             preferencesWindow = PreferencesWindowController()
         }
+        applyWindowLevels()
         preferencesWindow?.showWindow(nil)
         preferencesWindow?.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
@@ -134,8 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func settingsDidChange() {
         let settings = Settings.shared
 
-        // Update window level
-        calculatorWindow.window?.level = settings.alwaysOnTop ? .floating : .normal
+        applyWindowLevels()
 
         // Update formatter on the engine
         calculatorWindow.applySettings()
@@ -145,6 +142,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Apply appearance mode
         applyAppearance()
+    }
+
+    private func applyWindowLevels() {
+        let alwaysOnTop = Settings.shared.alwaysOnTop
+        calculatorWindow.window?.level = WindowLevelPolicy.calculator(alwaysOnTop: alwaysOnTop)
+        preferencesWindow?.window?.level = WindowLevelPolicy.preferences(alwaysOnTop: alwaysOnTop)
     }
 
     private func applyAppearance() {
@@ -162,5 +165,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func applyFormatterSettings(engine: GaussEngine) {
         engine.formatter.maxDecimalPlaces = Settings.shared.precision
         engine.formatter.dateFormatString = Settings.shared.dateFormat
+    }
+}
+
+enum WindowLevelPolicy {
+    static func calculator(alwaysOnTop: Bool) -> NSWindow.Level {
+        alwaysOnTop ? .floating : .normal
+    }
+
+    static func preferences(alwaysOnTop: Bool) -> NSWindow.Level {
+        alwaysOnTop
+            ? NSWindow.Level(rawValue: NSWindow.Level.floating.rawValue + 1)
+            : .normal
     }
 }
