@@ -183,20 +183,26 @@ final class CalculatorWindowController: NSWindowController {
         container.addSubview(scrollView)
         container.addSubview(resultView)
 
-        NSLayoutConstraint.activate([
-            lineNumberView.topAnchor.constraint(equalTo: container.topAnchor),
-            lineNumberView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            lineNumberView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+        let editorLeading = scrollView.leadingAnchor.constraint(equalTo: container.leadingAnchor)
+        editorLeading.priority = .defaultHigh
 
+        NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: container.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: lineNumberView.trailingAnchor),
+            editorLeading,
             scrollView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
             resultView.topAnchor.constraint(equalTo: container.topAnchor),
             resultView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             resultView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -12),
             resultView.widthAnchor.constraint(equalToConstant: 220),
+        ])
+
+        NSLayoutConstraint.activate([
+            lineNumberView.topAnchor.constraint(equalTo: container.topAnchor),
+            lineNumberView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            lineNumberView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: lineNumberView.trailingAnchor),
         ])
 
         // Sync scroll position
