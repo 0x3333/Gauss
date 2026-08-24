@@ -69,6 +69,14 @@ final class CalculatorWindowController: NSWindowController {
         handleTextChanged(saved)
     }
 
+    override func showWindow(_ sender: Any?) {
+        super.showWindow(sender)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.resultView.update(with: self.lineResults, textView: self.calcTextView)
+        }
+    }
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -156,6 +164,7 @@ final class CalculatorWindowController: NSWindowController {
 
         resultView = ResultView()
         resultView.translatesAutoresizingMaskIntoConstraints = false
+        resultView.attachWidthConstraint()
         resultView.onResultCopied = { [weak self] formatted in
             self?.showCopyToast(formatted)
         }
@@ -172,7 +181,6 @@ final class CalculatorWindowController: NSWindowController {
             resultView.topAnchor.constraint(equalTo: container.topAnchor),
             resultView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             resultView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -12),
-            resultView.widthAnchor.constraint(equalToConstant: 220),
         ])
 
         // Sync scroll position
@@ -402,6 +410,7 @@ extension CalculatorWindowController: NSWindowDelegate {
 
     func windowDidResize(_ notification: Notification) {
         saveFrame()
+        resultView.update(with: lineResults, textView: calcTextView)
     }
 
     func windowShouldClose(_ sender: NSWindow) -> Bool {
