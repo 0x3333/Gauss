@@ -43,6 +43,25 @@ Updates are delivered automatically via [Sparkle](https://sparkle-project.org)
 - **Syntax highlighting** with autocomplete and ghost-text suggestions.
 - **Global hotkey** — **Ctrl+Space** to toggle the calculator from anywhere.
 
+## Changes in this fork
+
+### Added
+
+- Line numbers and `@N` refs
+- Vertical separator between notebook and results
+
+### Fixed
+
+- Edit menu missing — Cmd+C/V/X/Z did nothing
+- Ghost suggestions overwrote text after cursor; font mismatch shifted text
+- Currency names (`US dollars`, `Brazilian Real`, etc.)
+- Currency decimals ignored preference
+- Leading zero required (`0.5` only)
+- Multi-word unit/currency autocomplete (`Brazilian re` → reais, not real)
+- Wrapped lines drew over results
+- Always on Top covered Preferences
+- Hotkey hid a visible unfocused window (now focuses)
+
 ## Build from Source
 
 Requires macOS 14.0+, Xcode 16+, and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
