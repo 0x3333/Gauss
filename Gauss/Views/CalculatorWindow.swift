@@ -154,7 +154,6 @@ final class CalculatorWindowController: NSWindowController {
 
         scrollView.documentView = calcTextView
 
-        // ResultView as an overlay
         resultView = ResultView()
         resultView.translatesAutoresizingMaskIntoConstraints = false
         resultView.onResultCopied = { [weak self] formatted in
@@ -168,7 +167,7 @@ final class CalculatorWindowController: NSWindowController {
             scrollView.topAnchor.constraint(equalTo: container.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: resultView.leadingAnchor),
 
             resultView.topAnchor.constraint(equalTo: container.topAnchor),
             resultView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
