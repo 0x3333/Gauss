@@ -67,6 +67,11 @@ final class TokenTests: XCTestCase {
         XCTAssertNotEqual(Token.keyword(.to), Token.keyword(.from))
     }
 
+    func testLineRefEquality() {
+        XCTAssertEqual(Token.lineRef(1), Token.lineRef(1))
+        XCTAssertNotEqual(Token.lineRef(1), Token.lineRef(2))
+    }
+
     func testAllKeywordsAreUnique() {
         let all = Keyword.allCases
         let unique = Set(all.map(\.rawValue))
@@ -423,6 +428,11 @@ final class ExpressionTests: XCTestCase {
     func testVariableRefEquality() {
         XCTAssertEqual(Expression.variableRef("price"), Expression.variableRef("price"))
         XCTAssertNotEqual(Expression.variableRef("price"), Expression.variableRef("cost"))
+    }
+
+    func testLineRefEquality() {
+        XCTAssertEqual(Expression.lineRef(1), Expression.lineRef(1))
+        XCTAssertNotEqual(Expression.lineRef(1), Expression.lineRef(2))
     }
 
     // MARK: - SpecialToken

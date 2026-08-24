@@ -535,6 +535,11 @@ private struct ExpressionParser {
             }
             return inner
 
+        // Line reference: @1
+        case .lineRef(let n):
+            advance()
+            return .lineRef(n)
+
         // Identifier — could be function call, special token, month name, or variable ref
         case .identifier(let name):
             return parseIdentifier(name)
