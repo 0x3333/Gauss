@@ -71,6 +71,14 @@ public struct Evaluator {
         case .variableRef(let name):
             return context.getVariable(name) ?? .undefined
 
+        case .lineRef(let n):
+            guard n >= 1 else { return .undefined }
+            let targetIndex = n - 1
+            if targetIndex == context.currentLineIndex {
+                return .circular
+            }
+            return context.lineResults[targetIndex] ?? .undefined
+
         case .specialToken(let token):
             switch token {
             case .sum, .total:

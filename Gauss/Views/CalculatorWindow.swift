@@ -8,6 +8,7 @@ final class CalculatorWindowController: NSWindowController {
     private let engine: GaussEngine
     private var calcTextView: CalcTextView!
     private var resultView: ResultView!
+    private var lineNumberView: LineNumberView!
     private var lineResults: [GaussEngine.LineResult] = []
     private let syntaxHighlighter = SyntaxHighlighter()
     private let documentController = DocumentController()
@@ -67,6 +68,18 @@ final class CalculatorWindowController: NSWindowController {
         guard !saved.isEmpty else { return }
         calcTextView.string = saved
         handleTextChanged(saved)
+    }
+
+    override func showWindow(_ sender: Any?) {
+        super.showWindow(sender)
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshLineLayout()
+        }
+    }
+
+    private func refreshLineLayout() {
+        resultView.update(with: lineResults, textView: calcTextView)
+        lineNumberView.update(textView: calcTextView)
     }
 
     @available(*, unavailable)
@@ -161,13 +174,23 @@ final class CalculatorWindowController: NSWindowController {
             self?.showCopyToast(formatted)
         }
 
+        lineNumberView = LineNumberView()
+        lineNumberView.translatesAutoresizingMaskIntoConstraints = false
+        lineNumberView.attachWidthConstraint()
+        lineNumberView.setVisible(Settings.shared.showLineNumbers)
+
+        container.addSubview(lineNumberView)
         container.addSubview(scrollView)
         container.addSubview(resultView)
 
         NSLayoutConstraint.activate([
+            lineNumberView.topAnchor.constraint(equalTo: container.topAnchor),
+            lineNumberView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            lineNumberView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+
             scrollView.topAnchor.constraint(equalTo: container.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: lineNumberView.trailingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
             resultView.topAnchor.constraint(equalTo: container.topAnchor),
@@ -297,6 +320,7 @@ final class CalculatorWindowController: NSWindowController {
         documentController.scheduleSave(content: text)
         lineResults = engine.evaluateDocument(text)
         resultView.update(with: lineResults, textView: calcTextView)
+        lineNumberView.update(textView: calcTextView)
         syntaxHighlighter.apply(to: calcTextView.textStorage!, results: lineResults)
     }
 
@@ -306,6 +330,8 @@ final class CalculatorWindowController: NSWindowController {
         guard let clipView = notification.object as? NSClipView else { return }
         resultView.scrollOffset = clipView.bounds.origin
         resultView.needsDisplay = true
+        lineNumberView.scrollOffset = clipView.bounds.origin
+        lineNumberView.needsDisplay = true
     }
 
     // MARK: - Public API
@@ -314,6 +340,7 @@ final class CalculatorWindowController: NSWindowController {
     func applySettings() {
         engine.formatter.maxDecimalPlaces = Settings.shared.precision
         engine.formatter.dateFormatString = Settings.shared.dateFormat
+        lineNumberView.setVisible(Settings.shared.showLineNumbers)
 
         // Update font
         updateFont()
@@ -344,6 +371,7 @@ final class CalculatorWindowController: NSWindowController {
         calcTextView.string = ""
         lineResults = []
         resultView.update(with: [], textView: calcTextView)
+        lineNumberView.update(textView: calcTextView)
     }
 
     /// Copy the result of the current line to the clipboard.
@@ -403,6 +431,7 @@ extension CalculatorWindowController: NSWindowDelegate {
 
     func windowDidResize(_ notification: Notification) {
         saveFrame()
+        refreshLineLayout()
     }
 
     func windowShouldClose(_ sender: NSWindow) -> Bool {

@@ -27,7 +27,8 @@ Updates are delivered automatically via [Sparkle](https://sparkle-project.org)
 ## Features
 
 - **Multi-line expressions** — evaluate a whole document at once; each line can
-  reference the results of previous lines.
+  reference earlier results (`@1 + 2`, `prev`) and variables. Line numbers
+  are optional (Preferences → Show Line Numbers).
 - **Variables** — `price = 49.99`, then `tax on price`, `price off 10%`, etc.
   Variable names are case-insensitive (`Price` = `price`).
 - **Units** — length, mass, temperature, speed, data, and more

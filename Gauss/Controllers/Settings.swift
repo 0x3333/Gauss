@@ -17,6 +17,7 @@ final class Settings {
         case launchAtLogin
         case currencyUpdateInterval
         case appearanceMode
+        case showLineNumbers
     }
 
     // MARK: - Properties
@@ -71,6 +72,11 @@ final class Settings {
     var appearanceMode: String {
         get { defaults.string(forKey: Key.appearanceMode.rawValue) ?? "system" }
         set { defaults.set(newValue, forKey: Key.appearanceMode.rawValue); notify() }
+    }
+
+    var showLineNumbers: Bool {
+        get { defaults.object(forKey: Key.showLineNumbers.rawValue) as? Bool ?? true }
+        set { defaults.set(newValue, forKey: Key.showLineNumbers.rawValue); notify() }
     }
 
     // MARK: - Notification

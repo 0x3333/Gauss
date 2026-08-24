@@ -14,6 +14,7 @@ final class PreferencesWindowController: NSWindowController {
     private var appearancePopUp: NSPopUpButton!
     private var alwaysOnTopCheckbox: NSButton!
     private var launchAtLoginCheckbox: NSButton!
+    private var showLineNumbersCheckbox: NSButton!
     private var currencyIntervalPopUp: NSPopUpButton!
 
     // MARK: - Date Format Options
@@ -46,7 +47,7 @@ final class PreferencesWindowController: NSWindowController {
 
     init() {
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 350, height: 420),
+            contentRect: NSRect(x: 0, y: 0, width: 350, height: 450),
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false
@@ -132,6 +133,9 @@ final class PreferencesWindowController: NSWindowController {
         appearancePopUp.target = self
         appearancePopUp.action = #selector(appearanceChanged)
         mainStack.addArrangedSubview(makeRow(label: "Appearance:", control: appearancePopUp, controlWidth: 120))
+
+        showLineNumbersCheckbox = NSButton(checkboxWithTitle: "Show Line Numbers", target: self, action: #selector(showLineNumbersChanged))
+        mainStack.addArrangedSubview(showLineNumbersCheckbox)
 
         // --- Separator ---
         mainStack.addArrangedSubview(makeSeparator())
@@ -227,6 +231,7 @@ final class PreferencesWindowController: NSWindowController {
 
         alwaysOnTopCheckbox.state = settings.alwaysOnTop ? .on : .off
         launchAtLoginCheckbox.state = settings.launchAtLogin ? .on : .off
+        showLineNumbersCheckbox.state = settings.showLineNumbers ? .on : .off
 
         if let idx = currencyIntervalOptions.firstIndex(where: { $0.interval == settings.currencyUpdateInterval }) {
             currencyIntervalPopUp.selectItem(at: idx)
@@ -253,6 +258,10 @@ final class PreferencesWindowController: NSWindowController {
         let idx = appearancePopUp.indexOfSelectedItem
         guard idx >= 0, idx < appearanceOptions.count else { return }
         Settings.shared.appearanceMode = appearanceOptions[idx].mode
+    }
+
+    @objc private func showLineNumbersChanged() {
+        Settings.shared.showLineNumbers = (showLineNumbersCheckbox.state == .on)
     }
 
     @objc private func alwaysOnTopChanged() {

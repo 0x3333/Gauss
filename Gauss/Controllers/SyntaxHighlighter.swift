@@ -80,6 +80,8 @@ final class SyntaxHighlighter {
             return (kw.rawValue, Theme.keywordColor)
         case .identifier(let name):
             return (name, Theme.variableColor)
+        case .lineRef(let n):
+            return ("@\(n)", Theme.variableColor)
         case .label(let text):
             return (text, Theme.variableColor)
         case .header(let text):

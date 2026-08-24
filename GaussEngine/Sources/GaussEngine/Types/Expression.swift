@@ -59,6 +59,9 @@ public indirect enum Expression: Equatable {
     /// Reference to a previously defined variable.
     case variableRef(String)
 
+    /// Reference to another line's result (`@1` is 1-based).
+    case lineRef(Int)
+
     /// A special aggregate or reference token.
     case specialToken(SpecialToken)
 }

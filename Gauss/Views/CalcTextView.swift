@@ -236,6 +236,62 @@ final class CalcTextView: NSTextView {
 
     // MARK: - Line Metrics
 
+    /// Visual fragments. `number` is set only on the first fragment of each
+    /// `\n`-separated line; wrap continuations are `nil`.
+    func gutterMetrics() -> [(y: CGFloat, height: CGFloat, number: Int?)] {
+        guard let layoutManager = layoutManager,
+              let textContainer = textContainer else { return [] }
+        layoutManager.ensureLayout(for: textContainer)
+
+        let text = string as NSString
+        var metrics: [(y: CGFloat, height: CGFloat, number: Int?)] = []
+        var charIndex = 0
+        let totalLength = text.length
+        var logical = 1
+        let fallbackHeight = Theme.monoFont.ascender - Theme.monoFont.descender + Theme.monoFont.leading
+
+        while charIndex <= totalLength {
+            if charIndex == totalLength {
+                if totalLength > 0 && text.character(at: totalLength - 1) == 0x0A {
+                    let last = metrics.last
+                    metrics.append((
+                        y: (last?.y ?? 0) + (last?.height ?? 0),
+                        height: fallbackHeight,
+                        number: logical
+                    ))
+                }
+                break
+            }
+
+            let glyphIndex = layoutManager.glyphIndexForCharacter(at: charIndex)
+            var effectiveRange = NSRange()
+            let lineRect = layoutManager.lineFragmentRect(
+                forGlyphAt: glyphIndex,
+                effectiveRange: &effectiveRange
+            )
+
+            let isLogicalStart = charIndex == 0
+                || text.character(at: charIndex - 1) == 0x0A
+            let number: Int? = isLogicalStart ? logical : nil
+            if isLogicalStart { logical += 1 }
+
+            metrics.append((
+                y: lineRect.origin.y,
+                height: lineRect.height > 0 ? lineRect.height : fallbackHeight,
+                number: number
+            ))
+
+            let charRange = layoutManager.characterRange(
+                forGlyphRange: effectiveRange,
+                actualGlyphRange: nil
+            )
+            let nextCharIndex = NSMaxRange(charRange)
+            charIndex = nextCharIndex <= charIndex ? charIndex + 1 : nextCharIndex
+        }
+
+        return metrics
+    }
+
     /// Returns the y-offset and height for each visual line in the text view,
     /// relative to the text container origin.
     func lineMetrics() -> [(y: CGFloat, height: CGFloat)] {
