@@ -80,4 +80,8 @@ final class AppTests: XCTestCase {
             .hide
         )
     }
+
+    func testResultViewClipsScrolledResults() {
+        XCTAssertTrue(ResultView().clipsToBounds)
+    }
 }
