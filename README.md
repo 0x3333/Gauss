@@ -5,6 +5,8 @@ currency conversion, color conversion, base64, date math, and syntax
 highlighting with autocomplete — all in a floating window summoned by a global
 hotkey.
 
+![Gauss calculator](.github/screenshot.jpg)
+
 **Free and open source.**
 
 ![macOS 14+](https://img.shields.io/badge/macOS-14.0%2B-blue)
