@@ -95,12 +95,14 @@ final class ResultView: NSView {
     // Called after super.init in the view hierarchy — set identifier here via override init
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
+        clipsToBounds = true
         setAccessibilityIdentifier("resultView")
         setAccessibilityLabel("Calculation Results")
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        clipsToBounds = true
         setAccessibilityIdentifier("resultView")
         setAccessibilityLabel("Calculation Results")
     }
