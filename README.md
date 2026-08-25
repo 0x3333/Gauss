@@ -15,16 +15,13 @@ hotkey.
 
 ## Download
 
-Download the latest signed and notarized build from GitHub Releases:
+This fork has no prebuilt releases. Clone the repo and build locally (see
+[Build from Source](#build-from-source)). After launch, a calculator icon
+appears in the menu bar; press **Ctrl+Space** anywhere to bring up the
+floating calculator.
 
-→ **[Gauss on GitHub Releases](https://github.com/lzhgus/Gauss/releases/latest)**
-
-Download the `.dmg`, drag Gauss to your Applications folder, and launch it. A
-calculator icon appears in your menu bar; press **Ctrl+Space** anywhere to bring
-up the floating calculator.
-
-Updates are delivered automatically via [Sparkle](https://sparkle-project.org)
-(appcast served from this repo's `gh-pages` branch).
+Signed upstream builds (without this fork's changes) are on
+[lzhgus/Gauss Releases](https://github.com/lzhgus/Gauss/releases/latest).
 
 ## Features
 
@@ -72,17 +69,22 @@ Requires macOS 14.0+, Xcode 16+, and [XcodeGen](https://github.com/yonaskolb/Xco
 # Install XcodeGen if you don't have it
 brew install xcodegen
 
-# Clone and build
-git clone https://github.com/lzhgus/Gauss.git
+# Clone and generate the Xcode project
+git clone https://github.com/0x3333/Gauss.git
 cd Gauss
 xcodegen generate
-xcodebuild -scheme Gauss -configuration Debug build
 
-# Run the engine tests
-cd GaussEngine && swift test
+# Run from Xcode
+open Gauss.xcodeproj
 ```
 
-Or open the generated `Gauss.xcodeproj` in Xcode and press Cmd+R.
+Press **Cmd+R** in Xcode to build and launch. Or build from the command line:
+
+```bash
+xcodebuild -scheme Gauss -configuration Debug build
+```
+
+Engine tests: `cd GaussEngine && swift test`.
 
 ## Architecture
 
