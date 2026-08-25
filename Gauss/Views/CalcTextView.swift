@@ -431,6 +431,13 @@ final class CalcTextView: NSTextView {
             return true
         }
 
+        // Cmd+? / Cmd+/: help
+        if event.modifierFlags.contains(.command),
+           event.charactersIgnoringModifiers == "?" || event.charactersIgnoringModifiers == "/" {
+            (NSApp.delegate as? AppDelegate)?.showHelp()
+            return true
+        }
+
         return super.performKeyEquivalent(with: event)
     }
 }

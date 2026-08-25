@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var calculatorWindow: CalculatorWindowController!
     private var currencyUpdater: CurrencyUpdater!
     private var preferencesWindow: PreferencesWindowController?
+    private var helpWindow: HelpWindowController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         debugLog("applicationDidFinishLaunching START")
@@ -133,6 +134,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
 
+    // MARK: - Help
+
+    func showHelp() {
+        if helpWindow == nil {
+            helpWindow = HelpWindowController()
+        }
+        applyWindowLevels()
+        helpWindow?.showWindow(nil)
+        helpWindow?.window?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
     // MARK: - Settings
 
     @objc private func settingsDidChange() {
@@ -154,6 +167,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let alwaysOnTop = Settings.shared.alwaysOnTop
         calculatorWindow.window?.level = WindowLevelPolicy.calculator(alwaysOnTop: alwaysOnTop)
         preferencesWindow?.window?.level = WindowLevelPolicy.preferences(alwaysOnTop: alwaysOnTop)
+        helpWindow?.window?.level = WindowLevelPolicy.help(alwaysOnTop: alwaysOnTop)
     }
 
     private func applyAppearance() {
@@ -179,6 +193,14 @@ enum WindowLevelPolicy {
     }
 
     static func preferences(alwaysOnTop: Bool) -> NSWindow.Level {
+        accessory(alwaysOnTop: alwaysOnTop)
+    }
+
+    static func help(alwaysOnTop: Bool) -> NSWindow.Level {
+        accessory(alwaysOnTop: alwaysOnTop)
+    }
+
+    static func accessory(alwaysOnTop: Bool) -> NSWindow.Level {
         alwaysOnTop
             ? NSWindow.Level(rawValue: NSWindow.Level.floating.rawValue + 1)
             : .normal

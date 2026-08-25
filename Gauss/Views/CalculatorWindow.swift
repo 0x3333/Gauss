@@ -266,6 +266,9 @@ final class CalculatorWindowController: NSWindowController {
         let prefsItem = NSMenuItem(title: "Preferences...", action: #selector(openPreferences), keyEquivalent: ",")
         prefsItem.keyEquivalentModifierMask = .command
         menu.addItem(prefsItem)
+        let helpItem = NSMenuItem(title: "Help", action: #selector(openHelp), keyEquivalent: "?")
+        helpItem.keyEquivalentModifierMask = .command
+        menu.addItem(helpItem)
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Export...", action: #selector(exportDocument), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Copy All to Clipboard", action: #selector(copyAllToClipboard), keyEquivalent: ""))
@@ -278,6 +281,10 @@ final class CalculatorWindowController: NSWindowController {
 
     @objc private func openPreferences() {
         (NSApp.delegate as? AppDelegate)?.showPreferences()
+    }
+
+    @objc private func openHelp() {
+        (NSApp.delegate as? AppDelegate)?.showHelp()
     }
 
     // MARK: - Export
@@ -416,6 +423,11 @@ final class CalculatorWindowController: NSWindowController {
         if event.modifierFlags.contains([.shift, .command]),
            event.charactersIgnoringModifiers == "c" {
             copyCurrentResult()
+            return
+        }
+        if event.modifierFlags.contains(.command),
+           event.charactersIgnoringModifiers == "?" || event.charactersIgnoringModifiers == "/" {
+            openHelp()
             return
         }
         super.keyDown(with: event)
